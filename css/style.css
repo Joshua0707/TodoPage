@@ -25,7 +25,7 @@ body {
 #form-container {
 	height: 40px;
 	display: flex;
-	flex-flow: nowrap row;
+	flex-flow: wrap row;
 	margin: 1.8rem auto;
 }
 
@@ -40,13 +40,24 @@ body {
 	top: 0;
 	left: 0;
 	bottom: 0;
-	right: 0;
+	/*right: 0;*/
+	width: 100%;
 	padding: .6rem;
 	border: none;
-	border-left: thin solid blue;
-	border-top: thin solid blue;
-	border-bottom: thin solid blue;
+	border-left: thin solid rgba(0, 0, 225, 0.09);
+	border-top: thin solid rgba(0, 0, 225, 0.09);
+	border-bottom: thin solid rgba(0, 0, 225, 0.09);
 	outline: none;
+}
+
+#input-container:after {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	bottom: 0px;
+	right: 0px;
+	border-bottom: thin solid blue;
+	background: red;
 }
 
 #form-container #button-container {
@@ -59,9 +70,16 @@ body {
  #button-container #form-submit {
  	height: 100%;
  	width: 100%;
- 	border: blue solid thin;
+ 	border: transparent solid thin;
+ 	border-left-color: transparent;
  	background: rgba(0, 0, 225, 0.09);
  	outline: none;
+ 	color: blue;
+ 	cursor: pointer;
+}
+
+#form-submit:hover {
+	color: red;
 }
 
 #todolist {
