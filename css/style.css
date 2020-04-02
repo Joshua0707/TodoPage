@@ -10,8 +10,7 @@ body {
 }
 
 #container {
-	max-width: 600px;
-	min-width: 500px;
+	width: 600px;
 	margin: 80px auto auto auto;
 }
 
@@ -76,6 +75,7 @@ body {
  	outline: none;
  	color: blue;
  	cursor: pointer;
+ 	font-family: "operator mono light";
 }
 
 #form-submit:hover {
@@ -105,6 +105,7 @@ body {
 
 .todo .text {
 	text-transform: capitalize;
+	text-overflow: ellipsis;
 }
 
 .todo .util {
@@ -158,4 +159,48 @@ body {
 
 #feedback.delete {
 	background: rgba(225, 0, 0, 0.1);
+}
+
+/* For MoTbile View */
+@media screen and (max-width: 780px) {
+
+	* {
+		box-sizing: border-box;
+		font-size: 1.1rem;
+	}
+
+	#container {
+		width: calc(100% - 50px);
+	}
+
+	#form-container {
+		padding: 10px;
+	}
+
+	#input-container {
+		width: calc(100% - 70px);
+	}
+
+	#button-container {
+		width: 70px;
+	}
+
+	.todo .text {
+		white-space: nowrap;
+		width: calc(100% - 155px);
+		height: 24px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+
+	}
+
+	.text:hover {
+		cursor: pointer;
+		text-overflow: inherit;
+    	overflow: visible;
+	}
+
+	.text:hover + .util {
+		opacity: 0.1;
+	}
 }
