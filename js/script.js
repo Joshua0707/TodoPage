@@ -120,7 +120,7 @@ const getList = (todoItems) => {
 	todoItems.forEach((item) => {
 
 		itemList.insertAdjacentHTML('beforeend', `<div class="todo">
-					<div class="text">${item}</div>
+					<p class="text">${item}</p>
 					<div class="util">
 						<img src="./image/complete.svg" alt="c" title="complete" class="complete-item" />
 						<img src="./image/edit.svg" alt="e" title="edit" class="edit-item" />
