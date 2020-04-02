@@ -1,3 +1,5 @@
+html { font-size:100%; }
+
 body {
 	margin: 0;
 	padding: 0;
@@ -29,7 +31,7 @@ body {
 }
 
 #form-container #input-container {
-	height: 40px;
+	height: 100%;
 	width: calc(100% - 150px);
 	position: relative;
 }
@@ -39,14 +41,20 @@ body {
 	top: 0;
 	left: 0;
 	bottom: 0;
-	/*right: 0;*/
 	width: 100%;
-	padding: .6rem;
+	padding: 1rem 1.5rem;
 	border: none;
 	border-left: thin solid rgba(0, 0, 225, 0.09);
 	border-top: thin solid rgba(0, 0, 225, 0.09);
 	border-bottom: thin solid rgba(0, 0, 225, 0.09);
 	outline: none;
+}
+
+#form-text:focus {
+	border: none;
+	border-left: thin solid #bbb;
+	border-top: thin solid #bbb;
+	border-bottom: thin solid #bbb;
 }
 
 #input-container:after {
@@ -61,7 +69,7 @@ body {
 
 #form-container #button-container {
 	margin: 0;
-	height: 40px;
+	height: 100%;
 	width: 150px;
 	position: relative;
 }
@@ -115,8 +123,8 @@ body {
 }
 
 .todo .util img {
-	width: 30px;
-	height: 30px;
+	width: 25px;
+	height: 25px;
 	margin: auto 10px;
 	cursor: pointer;
 }
@@ -131,11 +139,11 @@ body {
 
 #feedback {
 	position: fixed;
-	bottom: 10px;
-	left: 10px;
+	bottom: 20px;
+	left: 20px;
 	display: none;
 	align-items: center;
-	padding: 1rem;
+	padding: 1.2rem;
 	z-index: 100;
 	transition: 0.3s ease-in-out display, 150ms ease-in-out all;
 }
@@ -162,7 +170,8 @@ body {
 }
 
 /* For MoTbile View */
-@media screen and (max-width: 780px) {
+@media screen and (max-width: 780px)
+ {
 
 	* {
 		box-sizing: border-box;
@@ -203,4 +212,57 @@ body {
 	.text:hover + .util {
 		opacity: 0.1;
 	}
+}
+
+@media screen and (max-device-width: 780px) {
+    * {
+    	font-size: 1.2em;
+    }
+
+    #app-head {
+    	font-size: 3rem;
+    }
+
+    #container {
+    	margin: 200px auto;
+    	width: 90%;
+    }
+
+    #form-container {
+    	height: 120px;
+    }
+
+    #input-container {
+    	width: calc(100% - 200px);
+    }
+
+    #button-container {
+    	width: 200px;
+    }
+
+    #form-text {
+    	border: thin solid #ccc;
+    	border-right: none;
+    }
+
+    .todo .util img {
+    	width: 45px;
+    	height: 45px;
+    	margin: auto 20px;
+    }
+
+    #todolist .todo {
+    	margin: 40px auto;
+    }
+
+    #feedback {
+    	font-size: 1.5em;
+    	bottom: 40px;
+		left: 40px;
+    }
+
+    #feedback img {
+    	width: 45px;
+    	height: 45px;
+    }
 }
