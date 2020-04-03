@@ -44,9 +44,9 @@ body {
 	width: 100%;
 	padding: 1rem 1.5rem;
 	border: none;
-	border-left: thin solid rgba(0, 0, 225, 0.09);
-	border-top: thin solid rgba(0, 0, 225, 0.09);
-	border-bottom: thin solid rgba(0, 0, 225, 0.09);
+	border-left: thin solid #333;
+	border-top: thin solid #333;
+	border-bottom: thin solid #333;
 	outline: none;
 }
 
@@ -241,7 +241,7 @@ body {
     }
 
     #form-text {
-    	border: thin solid #ccc;
+    	border: thin solid #333;
     	border-right: none;
     }
 
