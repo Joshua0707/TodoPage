@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 131 131">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #006fff;
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <g id="Group_39" data-name="Group 39" transform="translate(-1097 -779)">
+    <g id="Group_38" data-name="Group 38">
+      <circle id="Ellipse_19" data-name="Ellipse 19" class="cls-1" cx="65.5" cy="65.5" r="65.5" transform="translate(1097 779)"/>
+      <path id="Union_19" data-name="Union 19" class="cls-2" d="M60-11.565,71.375-21V-2.106ZM71.431-2.106V-20.944H128.28V-2.106Z" transform="matrix(0.799, -0.602, 0.602, 0.799, 1094.307, 910.521)"/>
+    </g>
+  </g>
+</svg>

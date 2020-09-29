@@ -1,3 +1,5 @@
+const myTodoToken = "joshua.dev.mytodoapp";
+
 let todoItems = [];
 
 const nameInput = document.querySelector('#form-text');
@@ -10,15 +12,17 @@ const showFeedback = ({ status, text }) => {
 	switch (status) {
 		case 'edit':
 			feedback.classList.remove('complete');
+			feedback.classList.remove('info');
 			feedback.classList.remove('delete');
 			feedback.classList.add('edit');
 
-			feedback.querySelector('img').src = './image/edit.svg';
+			feedback.querySelector('img').src = './image/editt.svg';
 			break;
 		case 'complete':
 			feedback.classList.add('complete');
 			feedback.classList.remove('delete');
 			feedback.classList.remove('edit');
+			feedback.classList.remove('info');
 
 			feedback.querySelector('img').src = './image/complete.svg';
 			break;
@@ -26,11 +30,18 @@ const showFeedback = ({ status, text }) => {
 			feedback.classList.remove('complete');
 			feedback.classList.add('delete');
 			feedback.classList.remove('edit');
+			feedback.classList.remove('info');
 
 			feedback.querySelector('img').src = './image/delete.svg';
 			break;
 		default:
 			// statements_def
+			feedback.classList.remove('complete');
+			feedback.classList.add('info');
+			feedback.classList.remove('edit');
+			feedback.classList.remove('delete');
+
+			feedback.querySelector('img').src = './image/info.svg';
 			break;
 	}
 
@@ -88,6 +99,8 @@ const handleItem = (name) => {
 					status: 'edit',
 					text: `can edit now`
 				});
+
+				form.querySelector('[type="submit"]').classList.add("valid");
 			});
 
 			// for the delete
@@ -123,7 +136,7 @@ const getList = (todoItems) => {
 					<p class="text">${item}</p>
 					<div class="util">
 						<img src="./image/complete.svg" alt="c" title="complete" class="complete-item" />
-						<img src="./image/edit.svg" alt="e" title="edit" class="edit-item" />
+						<img src="./image/editt.svg" alt="e" title="edit" class="edit-item" />
 						<img src="./image/delete.svg" alt="d" title="delete" class="delete-item" />
 					</div>
 				</div>`);
@@ -137,7 +150,7 @@ const getList = (todoItems) => {
 // get local storage
 const getLocalStorage = () => {
 
-	const storage = localStorage.getItem('todoItems');
+	const storage = localStorage.getItem(myTodoToken);
 	if (!storage || storage === 'undefined') {
 		todoItems = [];
 	} else {
@@ -149,7 +162,7 @@ const getLocalStorage = () => {
 
 // set local storage
 const setLocalStorage = (todoItems) => {
-	localStorage.setItem('todoItems', JSON.stringify(todoItems));
+	localStorage.setItem(myTodoToken, JSON.stringify(todoItems));
 }
 
 // gte local storage from page
@@ -164,11 +177,14 @@ form.addEventListener('submit', (event) => {
 
 	if (name.length === 0) {
 		// show feedback
+		showFeedback({ status: 'info', text: "No valid input" })
 	} else {
 		todoItems.push(name);
 		setLocalStorage(todoItems);
 		getLocalStorage();
+		window.scrollTo(0, itemList.offsetTop + itemList.offsetHeight)
 	}
 
 	nameInput.value = '';
+	form.querySelector('[type="submit"]').classList.remove("valid");
 });

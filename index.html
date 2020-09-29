@@ -1,30 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>TodoList</title>
 	<link rel="stylesheet" href="./css/style.css">
 </head>
-	<body>
+	<body class>
 		<div class="complete" id="feedback">
 			<img src="./image/complete.svg" alt="c">
 			<span> Todo Completed! </span>
 		</div>
 
-		<div id="container">
-			<!-- Header-->
-			<header id="app-head"> Todo List </header>
+		<!-- app controls -->
+		<div id="app-controls" class>
+			<span></span>
+			<span></span>
+		</div>
+
+		<!-- Header-->
+		<header id="app-header">
+			<h1> Todo List </h1>
 
 			<!-- Form -->
 			<form id="form-container">
-				<div id="input-container">
-					<input type="text" placeholder="Name..." id="form-text" autocomplete="off">
-				</div>
-				<div id="button-container">
-					<button type="submit" id="form-submit">Add Item</button>
-				</div>
+				<input type="text" placeholder="Name..." id="form-text" autocomplete="off">
+				<button type="submit" id="form-submit">Add Item</button>
 			</form>
+		</header>
+
+		<div id="container">
 
 			<!-- Item Lists -->
 			<div id="todolist">
@@ -39,7 +45,76 @@
 			</div>
 		</div>
 
-
 		<script src="./js/script.js" type="text/javascript" charset="utf-8" async defer></script>
 	</body>
+	<div id="overflow-menu">
+		<div class="isSwitch">Dark Mode ? <span class="switch" id="dark-mode"><input type="checkbox" /><span></span></span></div>
+		<div>How to plan with Todos</div>
+		<div>About</div>
+	</div>
+	<script>
+		var isScrolling = false;
+
+		window.addEventListener("scroll", throttleScroll, false);
+
+		function throttleScroll(e) {
+			if (isScrolling == false) {
+				requestAnimationFrame(function() {
+					scrolling(e);
+					isScrolling = false;
+				});
+			}
+			isScrolling = true;
+		} 
+
+		document.addEventListener("DOMContentLoaded", scrolling, false);
+
+		var appHeader = document.querySelector("#app-header");
+		var appToggle = document.querySelector("#app-controls");
+		var overflowMenu = document.querySelector("#overflow-menu");
+		var formBx = document.querySelector("#form-container");
+
+		function scrolling(e) {
+			if (scrollY >= 100)
+				appHeader.classList.add("stick");
+			else
+				appHeader.classList.remove("stick");
+		}
+
+		appToggle.addEventListener('click', (e) => {
+			if (appToggle.classList.contains("toggle")) {
+				appToggle.classList.remove("toggle");
+				overflowMenu.classList.remove("show");
+				e.stopPropagation();
+			} else {
+				 appToggle.classList.add("toggle");
+				 overflowMenu.classList.add("show");
+			}
+		})
+
+		formBx.querySelector("input").addEventListener('input', e => {
+			if (e.target.value.length > 0)
+				formBx.querySelector('[type="submit"]').classList.add("valid");
+			else
+				formBx.querySelector('[type="submit"]').classList.remove("valid");
+		})
+
+
+		function atTop(el) {
+			var elementBoundary = el.getBoundingClientRect();
+			
+			var top = elementBoundary.top;
+
+			return top <= 0
+		}
+
+		const switchProps = {
+			darkModeSwitchCallback: () => {
+				appToggle.classList.remove("toggle");
+				overflowMenu.classList.remove("show");
+			}
+		}
+
+	</script>
+	<script src="./js/switch.js"></script>
 </html>
