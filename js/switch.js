@@ -22,7 +22,7 @@ darkSwitch.querySelector('input').addEventListener('input', () => {
         unsetDarkMode();
 
     if (switchProps.darkModeSwitchCallback) {
-        switchProps.darkModeSwitchCallback();
+        setTimeout(switchProps.darkModeSwitchCallback, 300);
     }
 });
 
