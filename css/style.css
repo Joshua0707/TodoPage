@@ -380,6 +380,7 @@ body.dark #app-header.stick {
 
 	.text:hover + .util {
 		opacity: 0.1;
+                user-select: none;
 	}
 
 	.todo .util img {
