@@ -25,6 +25,8 @@ body.dark {
 #overflow-menu {
 	width: 400px;
 	max-width: calc(100vw - 10px);
+	width: 300px;
+	max-width: calc(100vw - 20px);
 	height: 100vh;
 	background-color: #006fff;
 	position: fixed;
